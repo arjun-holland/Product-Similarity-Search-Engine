@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name": "Red Cotton T-Shirt",
+        "description": "Comfortable red t-shirt made from 100% cotton."
+    },
+    {
+        "id": 2,
+        "name": "Blue Denim Jeans",
+        "description": "Slim fit blue jeans made from high-quality denim."
+    },
+    {
+        "id": 3,
+        "name": "Wireless Bluetooth Earbuds",
+        "description": "Noise-cancelling earbuds with long battery life."
+    },
+    {
+        "id": 4,
+        "name": "Gaming Mouse",
+        "description": "Ergonomic gaming mouse with customizable RGB lighting."
+    },
+    {
+        "id": 5,
+        "name": "Running Shoes",
+        "description": "Lightweight running shoes for everyday training."
+    },
+    {
+        "name": "yellow shirts",
+        "description": "confirtable cotton "
+    },
+    {
+        "name": "green shirts",
+        "description": "confirtable silk material"
+    }
+]
