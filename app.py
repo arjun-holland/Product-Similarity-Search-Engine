@@ -1,66 +1,9 @@
-# from flask import Flask, request, jsonify
-# import json
-# import numpy as np
-# import faiss
-# from sentence_transformers import SentenceTransformer
-
-# # Load product data
-# with open("products.json", "r") as f:
-#     products = json.load(f)
-
-# # Load model
-# model = SentenceTransformer('all-MiniLM-L6-v2')
-
-# # Encode product descriptions
-# product_descriptions = [p["description"] for p in products]
-# embeddings = model.encode(product_descriptions)
-# embeddings = np.array(embeddings, dtype='float32')
-
-# # Create FAISS index (L2 distance)
-# dimension = embeddings.shape[1]
-# index = faiss.IndexFlatL2(dimension)
-# index.add(embeddings)
-
-# # Initialize Flask app
-# app = Flask(__name__)
-
-# # Search endpoint
-# @app.route("/search", methods=["GET"])
-# def search():
-#     query = request.args.get("query")
-#     k = int(request.args.get("k", 3))  # default top 3
-#     if not query:
-#         return jsonify({"error": "Please provide a query"}), 400
-    
-#     # Encode query
-#     query_vec = model.encode([query])
-#     query_vec = np.array(query_vec, dtype='float32')
-    
-#     # Search
-#     distances, indices = index.search(query_vec, k)
-#     results = []
-#     for i, idx in enumerate(indices[0]):
-#         results.append({
-#             "name": products[idx]["name"],
-#             "description": products[idx]["description"],
-#             "distance": float(distances[0][i])
-#         })
-    
-#     return jsonify({"query": query, "results": results})
-
-# @app.route("/", methods=["GET"])
-# def home():
-#     return jsonify({"message": "Product Similarity Search API is running!"})
-
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=5000)
-
-
 from flask import Flask, request, render_template
 import json
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
+import os
 
 # Load product data
 with open("products.json", "r") as f:
@@ -136,4 +79,7 @@ def add_product():
     return render_template("add.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+
